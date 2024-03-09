@@ -3,6 +3,7 @@ import { Canvas, useThree } from '@react-three/fiber';
 import { FlyControls } from 'three/examples/jsm/controls/FlyControls';
 import * as THREE from 'three';
 import {useEffect} from "react"
+import Globe from './Globe';
 
 export default function ThreeScene(){
     useEffect(() => {
