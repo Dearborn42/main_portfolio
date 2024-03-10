@@ -1,11 +1,8 @@
-import { Canvas, useThree } from '@react-three/fiber';
-// import { Suspense } from 'react';
 import { FlyControls } from 'three/examples/jsm/controls/FlyControls';
 import * as THREE from 'three';
 import {useEffect} from "react"
-import Globe from './Globe';
 
-export default function ThreeScene(){
+export default function Original(){
     useEffect(() => {
         let container;
         let camera, scene, renderer, controls;
@@ -21,13 +18,13 @@ export default function ThreeScene(){
             scene = new THREE.Scene();
             scene.fog = new THREE.Fog(0x000000, 1, 15000);
 
-            // const pointLight = new THREE.PointLight(0xff2200, 3, 0, 0);
-            // pointLight.position.set(0, 0, 0);
-            // scene.add(pointLight);
+            const pointLight = new THREE.PointLight(0xff2200, 3, 0, 0);
+            pointLight.position.set(0, 0, 0);
+            scene.add(pointLight);
 
-            // const dirLight = new THREE.DirectionalLight(0xffffff, 3);
-            // dirLight.position.set(0, 0, 1).normalize();
-            // scene.add(dirLight);
+            const dirLight = new THREE.DirectionalLight(0xffffff, 3);
+            dirLight.position.set(0, 0, 1).normalize();
+            scene.add(dirLight);
 
             const geometry = [
                 [new THREE.IcosahedronGeometry(100, 16), 50],
