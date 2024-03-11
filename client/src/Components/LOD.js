@@ -2,39 +2,45 @@ import { useEffect } from 'react';
 import { useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
-export default function LOD() {
+export default function LOD({setMeshArray}) {
   const { scene } = useThree();
 
   useEffect(() => {
-    const geometry = [
+    const IsoGeometry = [
       [new THREE.IcosahedronGeometry(100, 16), 50],
       [new THREE.IcosahedronGeometry(100, 8), 300],
       [new THREE.IcosahedronGeometry(100, 4), 1000],
       [new THREE.IcosahedronGeometry(100, 2), 2000],
       [new THREE.IcosahedronGeometry(100, 1), 8000]
     ];
+    const allMeshCoordinates = [];
 
-    const material = new THREE.MeshLambertMaterial({ color: 0xffffff, wireframe: true });
+    const IsoMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff, wireframe: true });
 
-    for (let j = 0; j < 1000; j++) {
+    for (let j = 0; j < 100; j++) {
       const lod = new THREE.LOD();
 
-      for (let i = 0; i < geometry.length; i++) {
-        const mesh = new THREE.Mesh(geometry[i][0], material);
+      for (let i = 0; i < IsoGeometry.length; i++) {
+        const mesh = new THREE.Mesh(IsoGeometry[i][0], IsoMaterial);
         mesh.scale.set(1.5, 1.5, 1.5);
         mesh.updateMatrix();
         mesh.matrixAutoUpdate = false;
-        lod.addLevel(mesh, geometry[i][1]);
+        lod.addLevel(mesh, IsoGeometry[i][1]);
       }
 
-      lod.position.x = 10000 * (0.5 - Math.random());
-      lod.position.y = 7500 * (0.5 - Math.random());
-      lod.position.z = 10000 * (0.5 - Math.random());
+      lod.position.x = 15000 * (0.5 - Math.random());
+      lod.position.y = 7550 * (0.5 - Math.random());
+      lod.position.z = 15000 * (0.5 - Math.random());
+      allMeshCoordinates.push({
+        x: lod.position.x,
+        y: lod.position.y,
+        z: lod.position.z
+      })
       lod.updateMatrix();
       lod.matrixAutoUpdate = false;
       scene.add(lod);
-    }
-
+    } 
+    setMeshArray(allMeshCoordinates);
     return () => {
       scene.children.forEach(child => {
         if (child instanceof THREE.LOD) {

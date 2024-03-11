@@ -11,7 +11,6 @@ export default function BrainScene(){
         const clock = new THREE.Clock();
         scene.fog = new THREE.Fog(0x000000, 1, 15000);
 
-        
         camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 15000);
         camera.position.z = 1000;
 
@@ -40,9 +39,8 @@ export default function BrainScene(){
         };
 
         animate();
-
         return () => {
-        window.removeEventListener('resize', onWindowResize);
+            window.removeEventListener('resize', onWindowResize);
         };
     }, [camera, scene, gl]);
 
