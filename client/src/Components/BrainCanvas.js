@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import { Canvas } from '@react-three/fiber';
 import LOD from './LOD';
 import BrainScene from './BrainScene';
-import BrainLines from './BrainLines';
-import DelaunayVisualization from './DelaunayVisualozation';
+import BrainLight from './BrainLight';
 
 export default function BrainCanvas() {
   const [meshArray, setMeshArray] = useState([]);
@@ -14,8 +13,7 @@ export default function BrainCanvas() {
         <pointLight color={0xff2200} intensity={3} distance={0} decay={0} position={[0, 0, 0]}/>
         <directionalLight color={0xffffff} intensity={3} position={[0, 0, 1]} />
         <LOD setMeshArray={setMeshArray}/>
-        <DelaunayVisualization array={meshArray}/>
-        <BrainLines />
+        <BrainLight array={meshArray} />
       </Canvas>
 
     </div>

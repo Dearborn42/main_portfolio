@@ -15,7 +15,7 @@ export default function LOD({setMeshArray}) {
     ];
     const allMeshCoordinates = [];
 
-    const IsoMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff, wireframe: true });
+    const IsoMaterial = new THREE.MeshLambertMaterial({ color: 0x0000ff, wireframe: true });
 
     for (let j = 0; j < 100; j++) {
       const lod = new THREE.LOD();
