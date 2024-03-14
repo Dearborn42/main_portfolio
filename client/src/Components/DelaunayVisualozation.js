@@ -8,7 +8,6 @@ function DelaunayVisualization({ array }) {
   useEffect(() => {
     if (array.length < 2) return;
 
-    // Sort points based on distance from the origin
     const sortedPoints = array.sort((a, b) => {
       const distA = a.x * a.x + a.y * a.y + a.z * a.z;
       const distB = b.x * b.x + b.y * b.y + b.z * b.z;
@@ -19,7 +18,6 @@ function DelaunayVisualization({ array }) {
     const linesGeometry = new THREE.BufferGeometry();
     const positions = [];
 
-    // Create lines between each point and its neighbors
     for (let i = 0; i < sortedPoints.length; i++) {
       const neighbors = delaunay.neighbors(i);
       const pointA = sortedPoints[i];

@@ -28,9 +28,9 @@ export default function LOD({setMeshArray}) {
         lod.addLevel(mesh, IsoGeometry[i][1]);
       }
 
-      lod.position.x = 15000 * (0.5 - Math.random());
-      lod.position.y = 7550 * (0.5 - Math.random());
-      lod.position.z = 15000 * (0.5 - Math.random());
+      lod.position.x = 8000 * (0.5 - Math.random());
+      lod.position.y = 10000 * (0.5 - Math.random());
+      lod.position.z = 8000 * (0.5 - Math.random());
       allMeshCoordinates.push({
         x: lod.position.x,
         y: lod.position.y,
