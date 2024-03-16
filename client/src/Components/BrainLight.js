@@ -1,16 +1,11 @@
-import React, { useRef, useEffect } from 'react';
-import { useThree } from '@react-three/fiber';
-import * as THREE from 'three';
 
-const BrainLight = ({ array }) => {
-    const { scene } = useThree();
-
-    useEffect(() => {
-
-
-    }, [array, scene]);
-
-    return null;
-};
-
-export default BrainLight;
+export default function BrainLight({array}){
+    return (
+        <group position={[0, 0, 0]} dispose={null}>
+            <mesh>
+                <sphereGeometry args={[100, 32, 32]} />
+                <meshStandardMaterial toneMapped={true} emissive="hotpink" color="red" emissiveIntensity={1000} />
+            </mesh>
+        </group>
+    )
+}

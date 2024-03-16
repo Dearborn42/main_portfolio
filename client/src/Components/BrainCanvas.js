@@ -1,21 +1,51 @@
+import * as THREE from 'three'
 import React, {useState} from 'react';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, } from '@react-three/fiber';
+import { EffectComposer, Bloom, BrightnessContrast, HueSaturation} from '@react-three/postprocessing';
 import LOD from './LOD';
 import BrainScene from './BrainScene';
 import BrainLight from './BrainLight';
+import { Frame, Rig } from '@/Components/GithubPortal';
 
 export default function BrainCanvas() {
   const [meshArray, setMeshArray] = useState([]);
   return (
      <div style={{ width: '90vw', height: '90vh', overflow: 'hidden' }}>
-      <Canvas frameloop="demand">
+      <Canvas frameloop="demand" >
         <BrainScene />
-        <pointLight color={0xff2200} intensity={3} distance={0} decay={0} position={[0, 0, 0]}/>
+        <pointLight color={0xff2200} intensity={10} distance={0} decay={0} position={[0, 0, 0]}/>
         <directionalLight color={0xffffff} intensity={3} position={[0, 0, 1]} />
         <LOD setMeshArray={setMeshArray}/>
-        <BrainLight array={meshArray} />
+        <color attach="background" args={['#220011']} />
+        {/* <BrainLight /> */}
+        <EffectComposer disableNormalPass>
+          <Bloom luminanceThreshold={.5} intensity={10000} radius={100000000000} />
+          <BrightnessContrast brightness={10000000} contrast={10000000} />
+          <HueSaturation hue={100000} saturation={-10000} />
+        </EffectComposer>
+        <Frame 
+          id="01" 
+          name={`pick\nles`} 
+          author="Omar Faruq Tawsif" 
+          bg="#e4cdac" 
+          position={[-1.15, 0, 0]} 
+          rotation={[0, 0.5, 0]} 
+        />
+        <Frame 
+          id="02" 
+          name="tea" 
+          author="Omar Faruq Tawsif"
+        />
+        <Frame 
+          id="03" 
+          name="still" 
+          author="Omar Faruq Tawsif" 
+          bg="#d1d1ca" 
+          position={[1.15, 0, 0]} 
+          rotation={[0, -0.5, 0]}
+        />
+        <Rig />
       </Canvas>
-
     </div>
   );
 }
