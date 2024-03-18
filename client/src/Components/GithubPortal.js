@@ -1,10 +1,9 @@
 import * as THREE from 'three'
 import { useEffect, useRef, useState } from 'react'
-import {extend, useFrame, useThree } from '@react-three/fiber'
-import { useCursor, MeshPortalMaterial, CameraControls, Gltf, Text } from '@react-three/drei'
+import { useFrame, useThree, extend } from '@react-three/fiber'
+import { useCursor, MeshPortalMaterial, CameraControls, Gltf } from '@react-three/drei'
 import { useRoute, useLocation } from 'wouter'
 import { easing, geometry } from 'maath'
-
 extend(geometry)
 
 export function Frame({ id, name, author, bg, width = 1, height = 1.61803398875, children, ...props }) {
@@ -17,10 +16,13 @@ export function Frame({ id, name, author, bg, width = 1, height = 1.61803398875,
   return (
     <group {...props}>
       <mesh name={id} onDoubleClick={(e) => (e.stopPropagation(), setLocation('/item/' + e.object.name))} onPointerOver={(e) => hover(true)} onPointerOut={() => hover(false)}>
-        <sphereGeometry args={[10, 16, 16]} />
+        <sphereGeometry args={[200, 200, 200]} />
         <MeshPortalMaterial ref={portal} events={params?.id === id} side={THREE.DoubleSide}>
           <color attach="background" args={[bg]} />
-          {children}
+          <mesh>
+            <sphereGeometry args={[1, 16, 16]} />
+            <meshBasicMaterial color="red" />
+          </mesh>
         </MeshPortalMaterial>
       </mesh>
     </group>

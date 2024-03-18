@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useThree } from '@react-three/fiber';
 import * as THREE from 'three';
+import { Frame } from "@/Components/GithubPortal";
 
 export default function LOD({setMeshArray}) {
   const { scene } = useThree();

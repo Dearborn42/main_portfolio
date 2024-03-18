@@ -25,26 +25,8 @@ export default function BrainCanvas() {
         </EffectComposer>
         <Frame 
           id="01" 
-          name={`pick\nles`} 
-          author="Omar Faruq Tawsif" 
-          bg="#e4cdac" 
-          position={[-1.15, 0, 0]} 
-          rotation={[0, 0.5, 0]} 
+          bg="#e4cdac"
         />
-        <Frame 
-          id="02" 
-          name="tea" 
-          author="Omar Faruq Tawsif"
-        />
-        <Frame 
-          id="03" 
-          name="still" 
-          author="Omar Faruq Tawsif" 
-          bg="#d1d1ca" 
-          position={[1.15, 0, 0]} 
-          rotation={[0, -0.5, 0]}
-        />
-        <Rig />
       </Canvas>
     </div>
   );
