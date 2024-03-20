@@ -1,30 +1,28 @@
 import * as THREE from 'three'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { useFrame, useThree, extend } from '@react-three/fiber'
-import { useCursor, MeshPortalMaterial, CameraControls, Gltf } from '@react-three/drei'
-import { useRoute, useLocation } from 'wouter'
+import { MeshPortalMaterial, CameraControls } from '@react-three/drei'
+import { useRoute } from 'wouter'
 import { easing, geometry } from 'maath'
 extend(geometry)
 
-export function Frame({ id, name, author, bg, width = 1, height = 1.61803398875, children, ...props }) {
+export function Frame({ id, name, bg, active, setActive, width = 1, height = 1.61803398875, children, ...props }) {
   const portal = useRef()
-  const [, setLocation] = useLocation()
-  const [, params] = useRoute('/item/:id')
-  const [hovered, hover] = useState(false)
-  useCursor(hovered)
-  useFrame((state, dt) => easing.damp(portal.current, 'blend', params?.id === id ? 1 : 0, 0.2, dt))
+  useFrame((_state, delta) => {
+    const worldOpen = active === name;
+    easing.damp(portal.current, "blend", worldOpen ? 1 : 0, 0.2, delta)
+  })
   return (
     <group {...props}>
-      <mesh name={id} onDoubleClick={(e) => (e.stopPropagation(), setLocation('/item/' + e.object.name))} onPointerOver={(e) => hover(true)} onPointerOut={() => hover(false)}>
-        <sphereGeometry args={[200, 200, 200]} />
-        <MeshPortalMaterial ref={portal} events={params?.id === id} side={THREE.DoubleSide}>
-          <color attach="background" args={[bg]} />
-          <mesh>
-            <sphereGeometry args={[1, 16, 16]} />
-            <meshBasicMaterial color="red" />
-          </mesh>
+        <mesh name={id} onDoubleClick={() => {
+            setActive(active === name ? null : name)
+        }}>
+        <sphereGeometry args={[200, 200, 200]}/>
+        <MeshPortalMaterial ref={portal} side={THREE.DoubleSide}>
+            <color attach="background" args={[bg]} />
+            {children}
         </MeshPortalMaterial>
-      </mesh>
+        </mesh>
     </group>
   )
 }

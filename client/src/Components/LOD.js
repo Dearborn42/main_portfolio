@@ -1,55 +1,55 @@
 import { useEffect } from 'react';
 import { useThree } from '@react-three/fiber';
 import * as THREE from 'three';
-import { Frame } from "@/Components/GithubPortal";
+import { Detailed } from '@react-three/drei';
 
-export default function LOD({setMeshArray}) {
+export default function LOD({ setMeshArray, array }) {
   const { scene } = useThree();
-
   useEffect(() => {
-    const IsoGeometry = [
-      [new THREE.IcosahedronGeometry(100, 16), 50],
-      [new THREE.IcosahedronGeometry(100, 8), 300],
-      [new THREE.IcosahedronGeometry(100, 4), 1000],
-      [new THREE.IcosahedronGeometry(100, 2), 2000],
-      [new THREE.IcosahedronGeometry(100, 1), 8000]
-    ];
+
     const allMeshCoordinates = [];
 
-    const IsoMaterial = new THREE.MeshLambertMaterial({ color: 0x0000ff, wireframe: true });
-
     for (let j = 0; j < 100; j++) {
-      const lod = new THREE.LOD();
+      const x = 8000 * (0.5 - Math.random());
+      const y = 10000 * (0.5 - Math.random());
+      const z = 8000 * (0.5 - Math.random());
+      allMeshCoordinates.push({ x, y, z });
+    }
 
-      for (let i = 0; i < IsoGeometry.length; i++) {
-        const mesh = new THREE.Mesh(IsoGeometry[i][0], IsoMaterial);
-        mesh.scale.set(1.5, 1.5, 1.5);
-        mesh.updateMatrix();
-        mesh.matrixAutoUpdate = false;
-        lod.addLevel(mesh, IsoGeometry[i][1]);
-      }
-
-      lod.position.x = 8000 * (0.5 - Math.random());
-      lod.position.y = 10000 * (0.5 - Math.random());
-      lod.position.z = 8000 * (0.5 - Math.random());
-      allMeshCoordinates.push({
-        x: lod.position.x,
-        y: lod.position.y,
-        z: lod.position.z
-      })
-      lod.updateMatrix();
-      lod.matrixAutoUpdate = false;
-      scene.add(lod);
-    } 
     setMeshArray(allMeshCoordinates);
+
     return () => {
       scene.children.forEach(child => {
-        if (child instanceof THREE.LOD) {
+        if (child instanceof Detailed) {
           scene.remove(child);
         }
       });
     };
-  }, [scene]);
+  }, [scene, setMeshArray]);
 
-  return null;
+  return array.map(x => (
+      <Detailed distances={[0, 15, 25, 35, 100]} position={[x.x, x.y, x.z]}>
+      <mesh>
+        <icosahedronGeometry args={[100, 16]} />
+        <meshLambertMaterial color={0x0000ff} wireframe />
+      </mesh>
+      <mesh>
+        <icosahedronGeometry args={[100, 8]} />
+        <meshLambertMaterial color={0x0000ff} wireframe />
+      </mesh>
+      <mesh>
+        <icosahedronGeometry args={[100, 4]} />
+        <meshLambertMaterial color={0x0000ff} wireframe />
+      </mesh>
+      <mesh>
+        <icosahedronGeometry args={[100, 2]} />
+        <meshLambertMaterial color={0x0000ff} wireframe />
+      </mesh>
+      <mesh>
+        <icosahedronGeometry args={[100, 1]} />
+        <meshLambertMaterial color={0x0000ff} wireframe />
+      </mesh>
+      <group />
+    </Detailed>
+    ))
 }

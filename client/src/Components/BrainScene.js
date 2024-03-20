@@ -4,21 +4,15 @@ import { FlyControls } from 'three/examples/jsm/controls/FlyControls';
 import * as THREE from 'three';
 
 export default function BrainScene(){
-    const { scene, gl } = useThree();
+    const { scene, gl, camera } = useThree();
     const controls = useRef();
-    var camera;
     useEffect(() => {
         const clock = new THREE.Clock();
         // scene.fog = new THREE.Fog(0xFFFFFFF, 1, 15000);
 
-        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 15000);
-        camera.position.z = 1000;
-
-
-
         controls.current = new FlyControls(camera, gl.domElement);
-        controls.current.movementSpeed = 1000;
-        controls.current.rollSpeed = Math.PI / 10;
+        controls.current.movementSpeed = 600;
+        controls.current.rollSpeed = Math.PI / 20;
 
         const onWindowResize = () => {
             camera.aspect = window.innerWidth / window.innerHeight;
