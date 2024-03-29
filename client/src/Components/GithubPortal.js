@@ -6,7 +6,7 @@ import { useRoute } from 'wouter'
 import { easing, geometry } from 'maath'
 extend(geometry)
 
-export function Frame({ id, name, bg, active, setActive, width = 1, height = 1.61803398875, children, ...props }) {
+export function Frame({ id, name, bg, active, setActive, meshArgs, children, ...props }) {
   const portal = useRef()
   useFrame((_state, delta) => {
     const worldOpen = active === name;
@@ -17,7 +17,7 @@ export function Frame({ id, name, bg, active, setActive, width = 1, height = 1.6
         <mesh name={id} onDoubleClick={() => {
             setActive(active === name ? null : name)
         }}>
-        <sphereGeometry args={[200, 200, 200]}/>
+        <sphereGeometry args={meshArgs}/>
         <MeshPortalMaterial ref={portal} side={THREE.DoubleSide}>
             <color attach="background" args={[bg]} />
             {children}

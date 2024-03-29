@@ -1,4 +1,3 @@
-import * as THREE from 'three'
 import React, {useState} from 'react';
 import { Canvas} from '@react-three/fiber';
 import LOD from './LOD';
@@ -17,8 +16,8 @@ export default function BrainCanvas() {
         <BrainCamera />
         <BrainScene />
         <color attach="background" args={['#220011']} />
-        <LOD setMeshArray={setMeshArray} array={meshArray}/>
-        <Frame id="01" bg="#e4cdac" name="test" active={active} setActive={setActive}>
+        <LOD setMeshArray={setMeshArray} array={meshArray} active={active} setActive={setActive}/>
+        <Frame id="01" bg="#e4cdac" name="test" active={active} setActive={setActive} meshArgs={[100, 16]}>
           <mesh>
             <sphereGeometry args={[1, 16, 16]} />
             <meshBasicMaterial color="red" />

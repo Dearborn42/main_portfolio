@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import { useThree } from '@react-three/fiber';
-import * as THREE from 'three';
 import { Detailed } from '@react-three/drei';
+import { Frame } from './GithubPortal';
 
-export default function LOD({ setMeshArray, array }) {
+export default function LOD({ setMeshArray, array, active, setActive }) {
   const { scene } = useThree();
   useEffect(() => {
 
     const allMeshCoordinates = [];
 
-    for (let j = 0; j < 100; j++) {
+    for (let j = 0; j < 30; j++) {
       const x = 8000 * (0.5 - Math.random());
       const y = 10000 * (0.5 - Math.random());
       const z = 8000 * (0.5 - Math.random());
@@ -27,29 +27,12 @@ export default function LOD({ setMeshArray, array }) {
     };
   }, [scene, setMeshArray]);
 
-  return array.map(x => (
-      <Detailed distances={[0, 15, 25, 35, 100]} position={[x.x, x.y, x.z]}>
-      <mesh>
-        <icosahedronGeometry args={[100, 16]} />
-        <meshLambertMaterial color={0x0000ff} wireframe />
-      </mesh>
-      <mesh>
-        <icosahedronGeometry args={[100, 8]} />
-        <meshLambertMaterial color={0x0000ff} wireframe />
-      </mesh>
-      <mesh>
-        <icosahedronGeometry args={[100, 4]} />
-        <meshLambertMaterial color={0x0000ff} wireframe />
-      </mesh>
-      <mesh>
-        <icosahedronGeometry args={[100, 2]} />
-        <meshLambertMaterial color={0x0000ff} wireframe />
-      </mesh>
-      <mesh>
-        <icosahedronGeometry args={[100, 1]} />
-        <meshLambertMaterial color={0x0000ff} wireframe />
-      </mesh>
-      <group />
-    </Detailed>
-    ))
+  return array.map((x, i) => (
+      <Frame id={i} bg="#e4cdac" name="test" active={active} setActive={setActive} meshArgs={[100, 16]} position={[x.x, x.y, x.z]}>
+        <mesh>
+          <sphereGeometry args={[1, 16, 16]} />
+          <meshBasicMaterial color="red" />
+        </mesh>
+      </Frame>
+  ));
 }
