@@ -9,7 +9,7 @@ export default function LOD({ setMeshArray, array, active, setActive }) {
 
     const allMeshCoordinates = [];
 
-    for (let j = 0; j < 30; j++) {
+    for (let j = 0; j < 20; j++) {
       const x = 8000 * (0.5 - Math.random());
       const y = 10000 * (0.5 - Math.random());
       const z = 8000 * (0.5 - Math.random());
@@ -27,12 +27,16 @@ export default function LOD({ setMeshArray, array, active, setActive }) {
     };
   }, [scene, setMeshArray]);
 
-  return array.map((x, i) => (
-      <Frame id={i} bg="#e4cdac" name="test" active={active} setActive={setActive} meshArgs={[100, 16]} position={[x.x, x.y, x.z]}>
-        <mesh>
-          <sphereGeometry args={[1, 16, 16]} />
-          <meshBasicMaterial color="red" />
-        </mesh>
-      </Frame>
-  ));
+  return (
+    <group>
+      {array.map((x, i) => (
+          <Frame id={i} bg="#e4cdac" name="test" active={active} setActive={setActive} meshArgs={[100, 16]} position={[x.x, x.y, x.z]}>
+            <mesh position={[x.x, x.y, x.z]}>
+              <sphereGeometry args={[1, 16, 16]} />
+              <meshBasicMaterial color="red" />
+            </mesh>
+          </Frame>
+      ))}
+    </group>
+  )
 }
