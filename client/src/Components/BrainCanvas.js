@@ -6,19 +6,21 @@ import BrainCamera from './BrainCamera';
 import { useThree } from '@react-three/fiber';
 import { CameraControls } from '@react-three/drei';
 import * as THREE from 'three';
+import {Html, useGLTF } from '@react-three/drei';
+import { GithubPage } from '@/Components/GithubPortal';
 
 export default function BrainCanvas() {
   const [meshArray, setMeshArray] = useState([]);
   const [active, setActive] = useState(null);
   const controlRef = useRef();
-  const scene = useThree((state) => state.scene)
+  const scene = useThree((state) => state.scene);
   useEffect(() => {
     if (active) {
       const targetPath = new THREE.Vector3();
       scene.getObjectByName(active).getWorldPosition(targetPath);
       console.log(controlRef.current);
       controlRef.current.setLookAt(
-        0, 0, 5, targetPath.x, targetPath.y, targetPath.z, true
+        5, 5, 5, targetPath.x, targetPath.y, targetPath.z, true
       )
     }
   }, [active]);
@@ -35,12 +37,20 @@ export default function BrainCanvas() {
         }
         <BrainScene />
         <color attach="background" args={['#220011']} />
-        <Frame bg="#e4cdac" name="test" active={active} setActive={setActive} meshArgs={[100, 16]}>
-          <mesh>
-            <sphereGeometry args={[1, 16, 16]} />
-            <meshBasicMaterial color="red" />
-          </mesh>
-        </Frame>
+        {/* <Frame bg="#000000" name="test" active={active} setActive={setActive} meshArgs={[100, 16]}> */}
+          {/* <mesh geometry={nodes['Cube008_2'].geometry} scale={[1000, 1000, 1000]} position={[100, 100, 100]}>
+            <Html 
+              className="content" 
+              rotation-x={-Math.PI / 2} 
+              position={[1000, 1000, 1000]}
+              transform 
+              occlude
+            >
+            </Html>
+          </mesh> */}
+        <GithubPage />
+        {/* </Frame> */}
+        
     </>
   );
 }
