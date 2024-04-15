@@ -1,12 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react';
-import LOD from './LOD';
 import BrainScene from './BrainScene';
-import { Frame, Rig } from '@/Components/GithubPortal';
+import { Frame } from '@/Components/GithubPortal';
 import BrainCamera from './BrainCamera';
 import { useThree } from '@react-three/fiber';
 import { CameraControls } from '@react-three/drei';
 import * as THREE from 'three';
-import {Html, useGLTF } from '@react-three/drei';
 import { GithubPage } from '@/Components/GithubPortal';
 
 export default function BrainCanvas() {

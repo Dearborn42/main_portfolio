@@ -8,8 +8,6 @@ extend(geometry)
 
 export function Frame({ bg, children, name, color, active, setActive, meshArgs, ...props }) {
   const portal = useRef();
-  const { nodes } = useGLTF('/mac-draco.glb');
-  console.log(nodes)
   useFrame((_state, delta) => {
     const worldOpen = active === name;
     easing.damp(portal.current, "blend", worldOpen ? 1 : 0, 0.2, delta)
