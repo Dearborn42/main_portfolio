@@ -1,11 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react';
 import BrainScene from './BrainScene';
-import { Frame } from '@/Components/GithubPortal';
+import { Frame, GithubPage } from '@/Components/GithubPortal';
 import BrainCamera from './BrainCamera';
 import { useThree } from '@react-three/fiber';
 import { CameraControls } from '@react-three/drei';
 import * as THREE from 'three';
-import { GithubPage } from '@/Components/GithubPortal';
 
 export default function BrainCanvas() {
   const [meshArray, setMeshArray] = useState([]);
