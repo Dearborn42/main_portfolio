@@ -37,7 +37,7 @@ export default function BrainCanvas() {
         }
         <BrainScene />
         <color attach="background" args={['#220011']} />
-        {/* <Frame bg="#000000" name="test" active={active} setActive={setActive} meshArgs={[100, 16]}> */}
+        <Frame bg="#000000" name="test" active={active} setActive={setActive} meshArgs={[100, 16]}>
           {/* <mesh geometry={nodes['Cube008_2'].geometry} scale={[1000, 1000, 1000]} position={[100, 100, 100]}>
             <Html 
               className="content" 
@@ -48,8 +48,8 @@ export default function BrainCanvas() {
             >
             </Html>
           </mesh> */}
-        <GithubPage />
-        {/* </Frame> */}
+           <GithubPage />
+        </Frame>
         
     </>
   );
