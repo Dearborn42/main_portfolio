@@ -1,16 +1,17 @@
 import React, {useState, useEffect, useRef} from 'react';
 import BrainScene from './BrainScene';
-import { Frame, GithubPage } from '@/Components/GithubPortal';
 import BrainCamera from './BrainCamera';
 import { useThree } from '@react-three/fiber';
 import { CameraControls } from '@react-three/drei';
 import * as THREE from 'three';
+import {Frame, GithubPage } from "./GithubPortal"
+import LOD from './LOD';
 
 export default function BrainCanvas() {
   const [meshArray, setMeshArray] = useState([]);
   const [active, setActive] = useState(null);
   const controlRef = useRef();
-  const scene = useThree((state) => state.scene);
+  const {scene} = useThree();
   useEffect(() => {
     if (active) {
       const targetPath = new THREE.Vector3();
@@ -35,19 +36,14 @@ export default function BrainCanvas() {
         <BrainScene />
         <color attach="background" args={['#220011']} />
         <Frame bg="#000000" name="test" active={active} setActive={setActive} meshArgs={[100, 16]}>
-          {/* <mesh geometry={nodes['Cube008_2'].geometry} scale={[1000, 1000, 1000]} position={[100, 100, 100]}>
-            <Html 
-              className="content" 
-              rotation-x={-Math.PI / 2} 
-              position={[1000, 1000, 1000]}
-              transform 
-              occlude
-            >
-            </Html>
-          </mesh> */}
            <GithubPage />
         </Frame>
-        
+        {/* <LOD 
+          setMeshArray={setMeshArray} 
+          setActive={setActive} 
+          active={active} 
+          meshArray={meshArray} 
+        /> */}
     </>
   );
 }

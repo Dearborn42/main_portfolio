@@ -1,7 +1,7 @@
 import * as THREE from 'three'
-import { useRef } from 'react'
+import { useRef, useMemo, createContext, useContext } from 'react'
 import { useFrame, extend } from '@react-three/fiber'
-import { MeshPortalMaterial, Html, useGLTF } from '@react-three/drei';
+import { MeshPortalMaterial, Html, useGLTF, Merged  } from '@react-three/drei';
 import { easing, geometry } from 'maath'
 extend(geometry)
 
@@ -27,12 +27,20 @@ export function Frame({ bg, children, name, color, active, setActive, meshArgs, 
   )
 }
 
+const elementContext = createContext();
+export function Page(){
+  const { nodes, materials } = useGLTF('/mac-draco.glb');
+  const instances = useMemo(() => ({ Page: nodes['Cube008_2']}), [nodes]);
+  return (
+    <Merged meshes={instances} {...props}>
+      {(instances) => <elementContext.Provider value={instances} children={children} />}
+    </Merged>
+  )
+} 
 
 export function GithubPage(){
-  const group = useRef()
-  // Load model
-  const { nodes } = useGLTF('/mac-draco.glb')
-  // Make it float
+  const group = useRef();
+  const instances = useContext(context)
   useFrame((state) => {
     const t = state.clock.getElapsedTime()
     group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, Math.cos(t / 2) / 20 + 0.25, 0.1)
@@ -45,14 +53,14 @@ export function GithubPage(){
     <group ref={group} position={[-200, -200, -200]} dispose={null}>
       <group rotation-x={-0.425} position={[200, 0, 0]}>
         <group position={[100, 200, 0]} rotation={[Math.PI / 2, 0, 0]}>
-         <mesh geometry={nodes['Cube008_2'].geometry} position={[0, 0, 0]} scale={[40, 40, 40]}>
+         <instances.Page position={[0, 0, 0]} scale={[40, 40, 40]}>
             {/* Drei's HTML component can "hide behind" canvas geometry */}
             <Html className="content" rotation-x={-Math.PI / 2} position={[110, 0, 0]} scale={[50, 50, 50]} transform occlude>
               {/* <div className="wrapper" onPointerDown={(e) => e.stopPropagation()}>
                 <HeroPage />
               </div> */}
             </Html>
-          </mesh>
+          </instances.Page>
         </group>
       </group>
     </group>

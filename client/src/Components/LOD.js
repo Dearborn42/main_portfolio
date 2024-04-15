@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useThree } from '@react-three/fiber';
 import { Detailed } from '@react-three/drei';
-import { Frame } from './GithubPortal';
+import { Frame, GithubPage } from './GithubPortal';
 
-export default function LOD({ setMeshArray, array, active, setActive }) {
+export default function LOD({ setMeshArray, meshArray, active, setActive }) {
   const { scene } = useThree();
   useEffect(() => {
 
@@ -25,17 +25,14 @@ export default function LOD({ setMeshArray, array, active, setActive }) {
         }
       });
     };
-  }, [scene, setMeshArray]);
+  }, []);
 
   return (
     <group>
-      {array.map((x, i) => (
-          <Frame id={i} bg="#e4cdac" name="test" active={active} setActive={setActive} meshArgs={[100, 16]} position={[x.x, x.y, x.z]}>
-            <mesh position={[x.x, x.y, x.z]}>
-              <sphereGeometry args={[1, 16, 16]} />
-              <meshBasicMaterial color="red" />
-            </mesh>
-          </Frame>
+      {meshArray.map((x, i) => (
+        <Frame key={i + `_key_id`} bg="#000000" name={`${i}_id`} active={active} setActive={setActive} meshArgs={[100, 16]} position={[x.x, x.y, x.z]}>
+          <GithubPage />
+        </Frame>
       ))}
     </group>
   )
