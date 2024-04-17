@@ -2,11 +2,12 @@
 
 import { Suspense, useEffect, useState, useRef, useLayoutEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Environment, MeshReflectorMaterial } from '@react-three/drei';
+import { Environment, MeshReflectorMaterial, Html } from '@react-three/drei';
 import LandingText from '@/Components/LandingText';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { Flex, Box, useFlexSize } from "@react-three/flex";
+import Link from 'next/link';
 
 export default function App() {
   gsap.registerPlugin(useGSAP);
@@ -56,14 +57,24 @@ export default function App() {
             text={"Begin"} 
             placement={[0, -.2, 4]}
             size={70}
-            button="true"
-          />
+          >
+            <Html occlude>
+              <Link href="/path" style={{background: "transparent", color: "transparent"}}>
+                  lorem
+              </Link>
+            </Html>
+          </LandingText>
           <LandingText
             text={"______"} 
             placement={[0, -.2, 4.1]}
             size={70}
-            button="true"
-          />
+          >
+            <Html occlude>
+              <Link href="/path" style={{background: "transparent", color: "transparent"}}>
+                  lorem
+              </Link>
+            </Html>
+          </LandingText>
         </Flex>
         <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[50, 50]} />
