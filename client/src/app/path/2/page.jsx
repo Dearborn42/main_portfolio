@@ -1,11 +1,9 @@
 "use client";
 
-import * as THREE from "three"
 import { Suspense, useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Environment, MeshReflectorMaterial, Html } from '@react-three/drei';
-
-const sphere = new THREE.SphereGeometry(1, 28, 28)
+import { Environment, MeshReflectorMaterial } from '@react-three/drei';
+import AboutMeOrbs from "@/Components/AboutMeOrbs";
 
 export default function Information() {
     const [width, setWidth] = useState(0);
@@ -25,12 +23,7 @@ export default function Information() {
             <orthographicCamera attach="shadow-camera" left={-20} right={20} top={20} bottom={-20} />
         </directionalLight>
         <Suspense fallback={null}>
-            <mesh geometry={sphere} position={[0, 0, -4]}/>
-            <mesh geometry={sphere} position={[0, 0, 4]}/>
-            <mesh geometry={sphere} position={[4, 0, -1]}/>
-            <mesh geometry={sphere} position={[-4, 0, -1]}/>
-            <mesh geometry={sphere} position={[4, 0, 2.5]}/>
-            <mesh geometry={sphere} position={[-4, 0, 2.5]}/>
+            <AboutMeOrbs />
         <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[50, 50]} />
           <MeshReflectorMaterial
