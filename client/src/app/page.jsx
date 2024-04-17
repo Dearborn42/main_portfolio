@@ -28,7 +28,7 @@ export default function App() {
   // }, [])
   return (
     <div style={{ width: `${width}px`, height: `${height}px`, overflow: 'hidden'}}>
-    <Canvas dpr={[1, 1.5]} shadows camera={{ position: [0, 7, 18], fov: 35 }} gl={{ alpha: false }}>
+    <Canvas dpr={[1, 1.5]} shadows camera={{ position: [0, 7, 18], fov: 35 }} gl={{ alpha: false }} frameloop="demand">
       <fog attach="fog" args={['#080808', 20, 40]} />
       <color attach="background" args={['#080808']} />
       <ambientLight intensity={1} />
