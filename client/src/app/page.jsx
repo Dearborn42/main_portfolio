@@ -2,32 +2,32 @@
 
 import { Suspense, useEffect, useState, useRef, useLayoutEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Environment, MeshReflectorMaterial, Text } from '@react-three/drei';
+import { Environment, MeshReflectorMaterial } from '@react-three/drei';
+import LandingText from '@/Components/LandingText';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { Flex, Box, useFlexSize } from "@react-three/flex";
 
 export default function App() {
   gsap.registerPlugin(useGSAP);
   const name = gsap.timeline();
-  const ref = useRef()
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
-  const [posY, setPosY] = useState(0);
   useEffect(() => {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
     console.log(window.innerWidth, window.innerHeight);
   }, []);
-  useLayoutEffect(() => {
-    name.to(posY, {
-      duration:2.5,
-      ease: "bounce.out",
-      y: 0
-    })
-  }, [])
+  // useLayoutEffect(() => {
+  //   name.to(posY, {
+  //     duration:2.5,
+  //     ease: "bounce.out",
+  //     y: 0
+  //   })
+  // }, [])
   return (
-    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', margin: 0, padding: 0 }}>
-    <Canvas dpr={[1, 1.5]} shadows camera={{ position: [0, 7, 18], fov: 35 }} gl={{ alpha: false }}>
+    <div style={{ width: `${width}px`, height: `${height}px`, overflow: 'hidden'}}>
+    <Canvas dpr={[1, 1.5]} shadows width={`${width}px`} height={`${height}px`} camera={{ position: [0, 7, 18], fov: 35 }} gl={{ alpha: false }}>
       <fog attach="fog" args={['#080808', 20, 40]} />
       <color attach="background" args={['#080808']} />
       <ambientLight intensity={1} />
@@ -38,9 +38,33 @@ export default function App() {
         {/* <ScrollControls pages={3}>
           <Train />
         </ScrollControls> */}
-        <Text name="name" fontSize={2} color="#ffffff" position={[0, posY, 4]}>
-          Andrew Murphy
-        </Text>
+        <Flex justifyContent="center" flexWrap="wrap" alignItems="center" size={[1, 1, 2]}>
+          <LandingText text={"Andrew Murphy"} placement={[0, 1.2, -5]}  size={20}/>
+          <Flex justifyContent="center" flexWrap="wrap" alignItems="center" size={[1, .9, .1]}>
+            <LandingText
+              text={"“Any man's death diminishes me, because I am involved in mankind;"} 
+              placement={[0, .7, -2]}
+              size={70}
+            />
+            <LandingText
+              text={"and therefore never send to know for whom the bell tolls; it tolls for thee.”"} 
+              placement={[0, -.2, -2]}
+              size={70}
+            />
+          </Flex>
+          <LandingText
+            text={"Begin"} 
+            placement={[0, -.2, 4]}
+            size={70}
+            button="true"
+          />
+          <LandingText
+            text={"______"} 
+            placement={[0, -.2, 4.1]}
+            size={70}
+            button="true"
+          />
+        </Flex>
         <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[50, 50]} />
           <MeshReflectorMaterial
