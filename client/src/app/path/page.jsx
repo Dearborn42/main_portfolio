@@ -2,25 +2,35 @@
 
 import { Suspense, useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Environment, MeshReflectorMaterial, Html } from '@react-three/drei';
+import { Environment, MeshReflectorMaterial, Html, AdaptiveDpr, AdaptiveEvents, PerformanceMonitor } from '@react-three/drei';
 import LandingText from '@/Components/LandingText';
 import BrainModel from '@/Components/BrainModel';
 
 export default function Path(){
     const [width, setWidth] = useState(0);
     const [height, setHeight] = useState(0);
+    const [dpr, setDpr] = useState(1.5)
     useEffect(() => {
         setWidth(window.innerWidth);
         setHeight(window.innerHeight);
     }, []);
   return (
     <div style={{ width: `${width}px`, height: `${height}px`, overflow: 'hidden'}}>
-        <Canvas 
-            dpr={[1, 1.5]} 
+        <Canvas
             shadows
-            camera={{ position: [0, 4, 20], fov: 35 }} 
+            camera={{ position: [0, 2, 20], fov: 35 }} 
             gl={{ alpha: false }}
+            dpr={dpr}
         >
+            <PerformanceMonitor 
+                factor={1} 
+                onChange={({ factor }) => setDpr(Math.floor(0.5 + 1.5 * factor, 1))}
+                flipflops={3} 
+                onFallback={() => setDpr(.5)}
+            />
+
+            <AdaptiveDpr pixelated />
+            <AdaptiveEvents />
             <fog attach="fog" args={['#080808', 20, 40]} />
             <color attach="background" args={['#080808']} />
             <ambientLight intensity={1} />
