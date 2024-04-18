@@ -41,11 +41,11 @@ export default function Information() {
         </directionalLight>
         <Suspense fallback={null}>
           <AboutMeOrbs pos={[0, 0, -4]}/>
-          <AboutMeOrbs pos={[4, 0, -1]}/>
+          <AboutMeOrbs pos={[4, 0, -2.5]}/>
           <AboutMeOrbs pos={[4, 0, 2.5]}/>
           <AboutMeOrbs pos={[0, 0, 4]}/>
           <AboutMeOrbs pos={[-4, 0, 2.5]}/>
-          <AboutMeOrbs pos={[-4, 0, -1]}/>
+          <AboutMeOrbs pos={[-4, 0, -2.5]}/>
           <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
             <planeGeometry args={[50, 50]} />
             <MeshReflectorMaterial
