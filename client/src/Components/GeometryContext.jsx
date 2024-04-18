@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useMemo, useContext } from "react";
+import { createContext, useMemo } from "react";
 import * as THREE from "three"
 
 export const GeometryContext = createContext();
