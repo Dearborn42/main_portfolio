@@ -6,9 +6,9 @@ import * as THREE from "three"
 export const GeometryContext = createContext();
 
 export function GeometryContextWrapper({children}){
-    const aboutSphereGeom = useMemo(() => new THREE.SphereGeometry(2, 32, 16), []);
+    const sceneFog = useMemo(() => new THREE.Fog('#080808', 20, 40), []);
     return (
-        <GeometryContext.Provider value={{aboutSphereGeom}}>
+        <GeometryContext.Provider value={{sceneFog}}>
             {children}
         </GeometryContext.Provider>
     )

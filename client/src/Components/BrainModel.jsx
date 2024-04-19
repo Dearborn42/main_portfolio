@@ -6,7 +6,7 @@ import {  useFBX } from '@react-three/drei';
 
 
 export default function BrainModel(){
-    const brain = useFBX("Brain_Model.fbx");
+    const brain = useFBX("/Brain_Model.fbx");
     const boxRef = useRef();
     useFrame(() => {
         boxRef.current.rotation.y += 0.01;

@@ -2,12 +2,14 @@
 
 import { Suspense, useEffect, useState, useRef, useLayoutEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Environment, MeshReflectorMaterial, Html, AdaptiveDpr, AdaptiveEvents, PerformanceMonitor } from '@react-three/drei';
+import { Environment, Html, AdaptiveDpr, AdaptiveEvents, PerformanceMonitor } from '@react-three/drei';
 import LandingText from '@/Components/LandingText';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { Flex, Box, useFlexSize } from "@react-three/flex";
+import { Flex } from "@react-three/flex";
 import Link from 'next/link';
+import MainPagesBackground from "@/Components/MainPagesBackground";
+import Scene from '@/Components/SceneFog';
 
 export default function App() {
   gsap.registerPlugin(useGSAP);
@@ -38,12 +40,7 @@ export default function App() {
       />
       <AdaptiveDpr pixelated />
       <AdaptiveEvents />
-      <fog attach="fog" args={['#080808', 20, 40]} />
-      <color attach="background" args={['#080808']} />
-      <ambientLight intensity={1} />
-      <directionalLight castShadow intensity={2} position={[10, 6, 6]} shadow-mapSize={[width, height]}>
-        <orthographicCamera attach="shadow-camera" left={-20} right={20} top={20} bottom={-20} />
-      </directionalLight>
+      <Scene width={width} height={height}/>
       <Suspense fallback={null}>
         {/* <ScrollControls pages={3}>
           <Train />
@@ -85,20 +82,7 @@ export default function App() {
             </Html>
           </LandingText>
         </Flex>
-        <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <planeGeometry args={[50, 50]} />
-          <MeshReflectorMaterial
-            blur={[400, 100]}
-            resolution={1024}
-            mixBlur={1}
-            mixStrength={1}
-            depthScale={10}
-            minDepthThreshold={0.85}
-            color="#212020"
-            metalness={0.6}
-            roughness={1}
-          />
-        </mesh>
+        <MainPagesBackground strength={1} />
         <Environment preset="dawn" />
       </Suspense>
     </Canvas>
