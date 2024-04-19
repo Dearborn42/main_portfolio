@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState, useRef } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Canvas,  } from '@react-three/fiber'
 import { 
   Environment,
@@ -12,6 +12,7 @@ import {
 import AboutMeOrbs from "@/Components/AboutMeOrbs";
 import MainPagesBackground from '@/Components/MainPagesBackground';
 import Scene from '@/Components/SceneFog';
+import { Perf } from 'r3f-perf'
 
 export default function Information() {
   const [width, setWidth] = useState(0);
@@ -25,6 +26,7 @@ export default function Information() {
   return (
     <div style={{ width: `${width}px`, height: `${height}px`, overflow: 'hidden'}}>
       <Canvas dpr={dpr} shadows camera={{ position: [0, 18, 20], fov: 35 }} gl={{ alpha: false }}>
+        <Perf position="top-left" />
         <PerformanceMonitor 
           factor={1} 
           onChange={({ factor }) => setDpr(Math.floor(0.5 + 1.5 * factor, 1))}
@@ -36,8 +38,8 @@ export default function Information() {
         <Scene width={width} height={height} active={active}/>
         <Suspense fallback={null}>
           <Instances limit={6} range={6} position={[0, 0, 0]}>
-            <sphereGeometry args={[2, 16, 16]} />
-            <meshStandardMaterial color="#f0f0f0" />
+            <sphereGeometry args={[2,16,16]} />
+            <meshStandardMaterial color="#f0f0f0"/>
             <AboutMeOrbs 
               key={"1"} 
               name="first" 
@@ -81,7 +83,7 @@ export default function Information() {
               setActive={setActive} 
             />
           </Instances>
-          <MainPagesBackground strength={1} />
+          {/* <MainPagesBackground strength={1} /> */}
           <Environment preset="dawn" />
         </Suspense>
       </Canvas>

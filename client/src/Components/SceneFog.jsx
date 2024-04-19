@@ -6,6 +6,7 @@ import * as THREE from 'three';
 
 const Scene = ({ width, height, active = null }) => {
     const { scene } = useThree();
+    const controlRef = useRef();
 
     useMemo(() => {
         scene.fog = new THREE.Fog('#080808', 20, 40);
@@ -22,27 +23,18 @@ const Scene = ({ width, height, active = null }) => {
         directionalLight.shadow.mapSize.width = width;
         directionalLight.shadow.mapSize.height = height;
     }, [scene, width, height]);
-    const controlRef = useRef();
     useEffect(() => {
       const targetPath = new THREE.Vector3();
       if (active) {
         scene.getObjectByName(active).getWorldPosition(targetPath);
         controlRef.current.setLookAt(
-          5, 5, 5, targetPath.x, targetPath.y, targetPath.z, true
-        )
-      }else{
-        controlRef.current.setLookAt(
-          0, 0, 0, 0, 0, 0, true
+          targetPath.x, targetPath.y, targetPath.z, targetPath.x, 0, targetPath.z, true
         )
       }
     }, [active]);
   return (
-    <CameraControls 
-      ref={controlRef}
-      maxPolarAngle={Math.PI / 2}
-      minPolarAngle={Math.PI / 6}
-    />
-  ); // This component doesn't render anything in the DOM
+    active ? <CameraControls ref={controlRef} /> : null
+  );
 };
 
 export default Scene;

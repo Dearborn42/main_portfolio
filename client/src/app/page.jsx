@@ -41,9 +41,6 @@ export default function App() {
       <AdaptiveEvents />
       <Scene width={width} height={height}/>
       <Suspense fallback={null}>
-        {/* <ScrollControls pages={3}>
-          <Train />
-        </ScrollControls> */}
         <Flex justifyContent="center" flexWrap="wrap" alignItems="center" size={[1, 1, 2]}>
           <LandingText text={"Andrew Murphy"} placement={[0, 1.2, -5]}  size={20}/>
           <Flex justifyContent="center" flexWrap="wrap" alignItems="center" size={[1, .9, .1]}>
@@ -58,30 +55,8 @@ export default function App() {
               size={70}
             />
           </Flex>
-          <LandingText
-            text={"Begin"} 
-            placement={[0, -.2, 4]}
-            size={70}
-          >
-            <Html occlude>
-              <Link href="/path" style={{background: "transparent", color: "transparent"}}>
-                  lorem
-              </Link>
-            </Html>
-          </LandingText>
-          <LandingText
-            text={"______"} 
-            placement={[0, -.2, 4.1]}
-            size={70}
-          >
-            <Html occlude>
-              <Link href="/path" style={{background: "transparent", color: "transparent"}}>
-                  lorem
-              </Link>
-            </Html>
-          </LandingText>
         </Flex>
-        <MainPagesBackground strength={1} />
+        <MainPagesBackground strength={1}/>
         <Environment preset="dawn" />
       </Suspense>
     </Canvas>

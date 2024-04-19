@@ -35,7 +35,6 @@ export default function Path(){
             <Scene width={width} height={height}/>
             <Suspense fallback={null}>
             <BrainModel />
-            <MainPagesBackground strength={90} />
             <Environment preset="dawn" />
             </Suspense>
         </Canvas>
