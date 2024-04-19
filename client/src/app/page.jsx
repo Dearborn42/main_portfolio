@@ -20,7 +20,6 @@ export default function App() {
   useEffect(() => {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
-    console.log(window.innerWidth, window.innerHeight);
   }, []);
   // useLayoutEffect(() => {
   //   name.to(posY, {
