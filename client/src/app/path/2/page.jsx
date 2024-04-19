@@ -1,7 +1,7 @@
 "use client";
 
-import { Suspense, useEffect, useState } from 'react'
-import { Canvas } from '@react-three/fiber'
+import { Suspense, useEffect, useState, useRef } from 'react'
+import { Canvas,  } from '@react-three/fiber'
 import { 
   Environment,
   AdaptiveDpr, 
@@ -17,11 +17,11 @@ export default function Information() {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [dpr, setDpr] = useState(1.5);
+  const [active, setActive] = useState(null);
   useEffect(() => {
       setWidth(window.innerWidth);
       setHeight(window.innerHeight);
   }, []);
-  
   return (
     <div style={{ width: `${width}px`, height: `${height}px`, overflow: 'hidden'}}>
       <Canvas dpr={dpr} shadows camera={{ position: [0, 18, 20], fov: 35 }} gl={{ alpha: false }}>
@@ -33,17 +33,53 @@ export default function Information() {
         />
         <AdaptiveDpr pixelated />
         <AdaptiveEvents />
-        <Scene width={width} height={height}/>
+        <Scene width={width} height={height} active={active}/>
         <Suspense fallback={null}>
           <Instances limit={6} range={6} position={[0, 0, 0]}>
             <sphereGeometry args={[2, 16, 16]} />
             <meshStandardMaterial color="#f0f0f0" />
-            <AboutMeOrbs key={"1"} pos={[0, 0, -4]}/>
-            <AboutMeOrbs key={"2"} pos={[4, 0, -2.5]}/>
-            <AboutMeOrbs key={"3"} pos={[4, 0, 2.5]}/>
-            <AboutMeOrbs key={"4"} pos={[0, 0, 4]}/>
-            <AboutMeOrbs key={"5"} pos={[-4, 0, 2.5]}/>
-            <AboutMeOrbs key={"6"} pos={[-4, 0, -2.5]}/>
+            <AboutMeOrbs 
+              key={"1"} 
+              name="first" 
+              pos={[0, 0, -4]} 
+              active={active} 
+              setActive={setActive}
+            />
+            <AboutMeOrbs 
+              key={"2"} 
+              name="second" 
+              pos={[4, 0, -2.5]} 
+              active={active} 
+              setActive={setActive} 
+            />
+            <AboutMeOrbs 
+              key={"3"} 
+              name="third" 
+              pos={[4, 0, 2.5]} 
+              active={active} 
+              setActive={setActive} 
+            />
+            <AboutMeOrbs 
+              key={"4"} 
+              name="fourth" 
+              pos={[0, 0, 4]} 
+              active={active} 
+              setActive={setActive} 
+            />
+            <AboutMeOrbs 
+              key={"5"} 
+              name="fifth" 
+              pos={[-4, 0, 2.5]} 
+              active={active} 
+              setActive={setActive} 
+            />
+            <AboutMeOrbs 
+              key={"6"} 
+              name="sixth" 
+              pos={[-4, 0, -2.5]} 
+              active={active} 
+              setActive={setActive} 
+            />
           </Instances>
           <MainPagesBackground strength={1} />
           <Environment preset="dawn" />

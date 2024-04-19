@@ -1,8 +1,10 @@
+import { useRef, useEffect} from "react";
 import { useThree } from '@react-three/fiber';
 import { useMemo } from 'react';
+import { CameraControls } from "@react-three/drei";
 import * as THREE from 'three';
 
-const Scene = ({ width, height }) => {
+const Scene = ({ width, height, active = null }) => {
     const { scene } = useThree();
 
     useMemo(() => {
@@ -20,8 +22,27 @@ const Scene = ({ width, height }) => {
         directionalLight.shadow.mapSize.width = width;
         directionalLight.shadow.mapSize.height = height;
     }, [scene, width, height]);
-
-  return null; // This component doesn't render anything in the DOM
+    const controlRef = useRef();
+    useEffect(() => {
+      const targetPath = new THREE.Vector3();
+      if (active) {
+        scene.getObjectByName(active).getWorldPosition(targetPath);
+        controlRef.current.setLookAt(
+          5, 5, 5, targetPath.x, targetPath.y, targetPath.z, true
+        )
+      }else{
+        controlRef.current.setLookAt(
+          0, 0, 0, 0, 0, 0, true
+        )
+      }
+    }, [active]);
+  return (
+    <CameraControls 
+      ref={controlRef}
+      maxPolarAngle={Math.PI / 2}
+      minPolarAngle={Math.PI / 6}
+    />
+  ); // This component doesn't render anything in the DOM
 };
 
 export default Scene;
