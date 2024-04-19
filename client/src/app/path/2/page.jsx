@@ -26,7 +26,7 @@ export default function Information() {
   return (
     <div style={{ width: `${width}px`, height: `${height}px`, overflow: 'hidden'}}>
       <Canvas dpr={dpr} shadows camera={{ position: [0, 18, 20], fov: 35 }} gl={{ alpha: false }}>
-        <Perf position="top-left" />
+        {/* <Perf position="top-left" /> */}
         <PerformanceMonitor 
           factor={1} 
           onChange={({ factor }) => setDpr(Math.floor(0.5 + 1.5 * factor, 1))}
@@ -83,7 +83,6 @@ export default function Information() {
               setActive={setActive} 
             />
           </Instances>
-          {/* <MainPagesBackground strength={1} /> */}
           <Environment preset="dawn" />
         </Suspense>
       </Canvas>
