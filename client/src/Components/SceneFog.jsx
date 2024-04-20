@@ -4,8 +4,8 @@ import { useMemo } from 'react';
 import { CameraControls } from "@react-three/drei";
 import * as THREE from 'three';
 
-const Scene = ({ width, height, active = null }) => {
-    const { scene } = useThree();
+const Scene = ({ active = null }) => {
+    const { scene, viewport } = useThree();
     const controlRef = useRef();
 
     useMemo(() => {
@@ -20,9 +20,9 @@ const Scene = ({ width, height, active = null }) => {
 
         const shadowCamera = new THREE.OrthographicCamera(-20, 20, 20, -20, 0.1, 100);
         directionalLight.shadow.camera = shadowCamera;
-        directionalLight.shadow.mapSize.width = width;
-        directionalLight.shadow.mapSize.height = height;
-    }, [scene, width, height]);
+        directionalLight.shadow.mapSize.width = viewport.width;
+        directionalLight.shadow.mapSize.height = viewport.height;
+    }, [scene, viewport]);
     useEffect(() => {
       const targetPath = new THREE.Vector3();
       if (active) {

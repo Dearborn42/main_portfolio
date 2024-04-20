@@ -9,15 +9,12 @@ import MainPagesBackground from "@/Components/MainPagesBackground";
 import Scene from '@/Components/SceneFog';
 
 export default function App() {
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
   const [dpr, setDpr] = useState(1.5)
-  useEffect(() => {
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
-  }, []);
   return (
-    <div style={{ width: `${width}px`, height: `${height}px`, overflow: 'hidden'}}>
+    <div className='fixed top-0 bottom-0 right-0 left-0'>
+      <div className={'fixed top-0 bottom-0 right-0 left-0 flex '}>
+          
+      </div>
     <Canvas dpr={dpr} shadows camera={{ position: [0, 7, 18], fov: 35 }} gl={{ alpha: false }} frameloop="demand">
       <PerformanceMonitor 
         factor={1} 
@@ -27,7 +24,7 @@ export default function App() {
       />
       <AdaptiveDpr pixelated />
       <AdaptiveEvents />
-      <Scene width={width} height={height}/>
+      <Scene/>
       <Suspense fallback={null}>
         <Flex justifyContent="center" flexWrap="wrap" alignItems="center" size={[1, 1, 2]}>
           <LandingText text={"Andrew Murphy"} placement={[0, 1.2, -5]}  size={20}/>

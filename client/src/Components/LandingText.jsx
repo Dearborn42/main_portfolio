@@ -1,12 +1,10 @@
 import { useThree } from '@react-three/fiber'
 import { Text, Html } from '@react-three/drei';
 import { Box } from "@react-three/flex";
-import { useEffect } from "react";
 
 
 export default function LandingText({text, placement, size, children}){
     const { viewport } = useThree();
-    useEffect(() => {return null}, [viewport.width, viewport.height]);
     return (
         <Box centerAnchor>
         <Text 

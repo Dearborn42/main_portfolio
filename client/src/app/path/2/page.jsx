@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from 'react'
+import { Suspense, useState } from 'react'
 import { Canvas,  } from '@react-three/fiber'
 import { 
   Environment,
@@ -10,21 +10,13 @@ import {
   Instances
 } from '@react-three/drei';
 import AboutMeOrbs from "@/Components/AboutMeOrbs";
-import MainPagesBackground from '@/Components/MainPagesBackground';
 import Scene from '@/Components/SceneFog';
-import { Perf } from 'r3f-perf'
 
 export default function Information() {
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
   const [dpr, setDpr] = useState(1.5);
   const [active, setActive] = useState(null);
-  useEffect(() => {
-      setWidth(window.innerWidth);
-      setHeight(window.innerHeight);
-  }, []);
   return (
-    <div style={{ width: `${width}px`, height: `${height}px`, overflow: 'hidden'}}>
+    <div className='fixed top-0 bottom-0 right-0 left-0'>
       <Canvas dpr={dpr} shadows camera={{ position: [0, 18, 20], fov: 35 }} gl={{ alpha: false }}>
         {/* <Perf position="top-left" /> */}
         <PerformanceMonitor 
@@ -35,7 +27,7 @@ export default function Information() {
         />
         <AdaptiveDpr pixelated />
         <AdaptiveEvents />
-        <Scene width={width} height={height} active={active}/>
+        <Scene active={active}/>
         <Suspense fallback={null}>
           <Instances limit={6} range={6} position={[0, 0, 0]}>
             <sphereGeometry args={[2,16,16]} />
