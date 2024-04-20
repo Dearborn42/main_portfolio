@@ -1,20 +1,15 @@
 import { useThree } from '@react-three/fiber'
-import { Text, Html } from '@react-three/drei';
-import { Box } from "@react-three/flex";
+import { Text } from '@react-three/drei';
 
 
 export default function LandingText({text, placement, size, children}){
     const { viewport } = useThree();
     return (
-        <Box centerAnchor>
-        <Text 
-            fontSize={
-                viewport.width > viewport.height ? 
-                viewport.width / size : 
-                viewport.height / size
-            } 
+        <Text
+            fontSize={viewport.width / (viewport.width * (size/viewport.width))} 
             color="#ffffff" 
             position={placement}
+            anchorX="center"
             maxWidth={
                 viewport.width > viewport.height ? 
                 viewport.width / 2 : 
@@ -22,9 +17,6 @@ export default function LandingText({text, placement, size, children}){
             }
         >
             {text}
-            {children}
         </Text>
-                
-        </Box>
     )
 }
