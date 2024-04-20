@@ -42,35 +42,28 @@ export default function Information() {
             <AboutMeOrbs 
               key={"2"} 
               name="second" 
-              pos={[4, 0, -2.5]} 
+              pos={[3.464, 0, -1]} 
               active={active} 
               setActive={setActive} 
             />
             <AboutMeOrbs 
               key={"3"} 
               name="third" 
-              pos={[4, 0, 2.5]} 
+              pos={[2.464, 0, 3.464]} 
               active={active} 
               setActive={setActive} 
             />
             <AboutMeOrbs 
               key={"4"} 
               name="fourth" 
-              pos={[0, 0, 4]} 
+              pos={[-2.464, 0, 3.464]} 
               active={active} 
               setActive={setActive} 
             />
             <AboutMeOrbs 
               key={"5"} 
               name="fifth" 
-              pos={[-4, 0, 2.5]} 
-              active={active} 
-              setActive={setActive} 
-            />
-            <AboutMeOrbs 
-              key={"6"} 
-              name="sixth" 
-              pos={[-4, 0, -2.5]} 
+              pos={[-3.464, 0, -1]} 
               active={active} 
               setActive={setActive} 
             />
