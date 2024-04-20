@@ -1,19 +1,14 @@
 "use client";
 
-import { Suspense, useEffect, useState, useRef, useLayoutEffect } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Environment, Html, AdaptiveDpr, AdaptiveEvents, PerformanceMonitor } from '@react-three/drei';
+import { Environment, AdaptiveDpr, AdaptiveEvents, PerformanceMonitor } from '@react-three/drei';
 import LandingText from '@/Components/LandingText';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 import { Flex } from "@react-three/flex";
-import Link from 'next/link';
 import MainPagesBackground from "@/Components/MainPagesBackground";
 import Scene from '@/Components/SceneFog';
 
 export default function App() {
-  gsap.registerPlugin(useGSAP);
-  const name = gsap.timeline();
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [dpr, setDpr] = useState(1.5)
@@ -21,13 +16,6 @@ export default function App() {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
   }, []);
-  // useLayoutEffect(() => {
-  //   name.to(posY, {
-  //     duration:2.5,
-  //     ease: "bounce.out",
-  //     y: 0
-  //   })
-  // }, [])
   return (
     <div style={{ width: `${width}px`, height: `${height}px`, overflow: 'hidden'}}>
     <Canvas dpr={dpr} shadows camera={{ position: [0, 7, 18], fov: 35 }} gl={{ alpha: false }} frameloop="demand">
