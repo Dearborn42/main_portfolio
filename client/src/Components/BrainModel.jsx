@@ -11,5 +11,5 @@ export default function BrainModel(){
     useFrame(() => {
         boxRef.current.rotation.y += 0.01;
     });
-    return <primitive ref={boxRef} object={brain} scale={4} position={[0, -1.9, 2]}/>
+    return <primitive ref={boxRef} object={brain} scale={5.5} position={[0, -3, 2]}/>
 }

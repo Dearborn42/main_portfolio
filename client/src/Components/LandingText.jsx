@@ -2,11 +2,11 @@ import { useThree } from '@react-three/fiber'
 import { Text } from '@react-three/drei';
 
 
-export default function LandingText({text, placement, size, children}){
+export default function LandingText({text, placement, size}){
     const { viewport } = useThree();
     return (
         <Text
-            fontSize={viewport.width / (viewport.width * (size/viewport.width))} 
+            fontSize={viewport.width / (viewport.width + size)} 
             color="#ffffff" 
             position={placement}
             anchorX="center"

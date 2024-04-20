@@ -1,6 +1,5 @@
 import { MeshReflectorMaterial } from '@react-three/drei';
 import {useMemo} from "react"
-import * as THREE from "three";
 
 export default function MainPagesBackground({strength}){
     const material = useMemo(() => (
