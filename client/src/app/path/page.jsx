@@ -4,9 +4,10 @@ import { Suspense, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment, AdaptiveDpr, AdaptiveEvents, PerformanceMonitor } from '@react-three/drei';
 import BrainModel from '@/Components/BrainModel';
-import Scene from '@/Components/SceneFog';
 import { GoChevronLeft , GoChevronRight   } from "react-icons/go";
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+const Scene = dynamic(() => import('@/Components/SceneFog'), { ssr: false }); 
 
 export default function Path(){
     const [dpr, setDpr] = useState(1.5);

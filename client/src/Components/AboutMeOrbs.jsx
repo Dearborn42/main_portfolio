@@ -17,12 +17,11 @@ export default function AboutMeOrbs({pos, name, active, setActive}){
         const time = state.clock.getElapsedTime();
         const phase = initialPhase + speed * time;
         var base = Math.ceil(viewport.width / 4);
-        var num = viewport.width > 876 ? 6 : base;
+        var num = viewport.width > 28 ? 6 : base;
         const radius = num;
         // 27.12345214523
         // 21.39282308976029835
         // 15.403285023945
-        // 
 
         // Update the position of the mesh
         sphereRef.current.position.x = radius * Math.cos(phase);

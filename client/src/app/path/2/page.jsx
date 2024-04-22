@@ -9,18 +9,18 @@ import {
   PerformanceMonitor,
   Instances
 } from '@react-three/drei';
-import AboutMeOrbs from "@/Components/AboutMeOrbs";
-import Scene from '@/Components/SceneFog';
 import Link from 'next/link';
-import { GoChevronLeft } from "react-icons/go";
 import { FaArrowLeft } from "react-icons/fa6";
+import AboutMeOrbs from '@/Components/AboutMeOrbs';
+import dynamic from 'next/dynamic';
+const Scene = dynamic(() => import('@/Components/SceneFog'), { ssr: false });
 
 export default function Information() {
   const [dpr, setDpr] = useState(1.5);
   const [active, setActive] = useState(null);
   return (
     <div className='fixed top-0 bottom-0 right-0 left-0'>
-      <div className="fixed top-0 bottom-0 right-0 left-0 z-10 flex justify-between">
+      <div className="fixed top-0 right-0 z-10 flex justify-between">
         <Link href="/path" className="fixed top-12 text-sm sm:text-4xl left-24">
           <FaArrowLeft />
         </Link>
@@ -42,7 +42,7 @@ export default function Information() {
             <meshStandardMaterial color="#f0f0f0"/>
             <AboutMeOrbs 
               key={"1"} 
-              name="contact" 
+              name="first"
               pos={[0, 0, -2]} 
               active={active} 
               setActive={setActive}
