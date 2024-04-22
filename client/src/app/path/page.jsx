@@ -13,7 +13,7 @@ export default function Path(){
     return (
         <div className='fixed top-0 bottom-0 right-0 left-0'>
             <div className="fixed top-0 bottom-0 right-0 left-0 z-10 flex justify-between">
-                <Link href="/path/1" className="fixed bottom-1/3 text-sm sm:text-4xl left-1/4 arrow arrow1">
+                <Link href="/path/1" className="fixed bottom-1/2 text-sm sm:text-4xl left-1/4 arrow arrow1">
                     <span><GoChevronLeft /></span>
                     <span><GoChevronLeft /></span>
                     <span><GoChevronLeft /></span>
