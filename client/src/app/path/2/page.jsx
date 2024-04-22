@@ -34,7 +34,7 @@ export default function Information() {
             <meshStandardMaterial color="#f0f0f0"/>
             <AboutMeOrbs 
               key={"1"} 
-              name="first" 
+              name="contact" 
               pos={[0, 0, -4]} 
               active={active} 
               setActive={setActive}
@@ -62,7 +62,7 @@ export default function Information() {
             />
             <AboutMeOrbs 
               key={"5"} 
-              name="fifth" 
+              name="contact" 
               pos={[-3.464, 0, -1]} 
               active={active} 
               setActive={setActive} 

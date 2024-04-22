@@ -25,7 +25,7 @@ export default function AboutMeOrbs({pos, name, active, setActive}){
     }, []);
     useEffect(function(){
         if(active){
-            router.push("/path")
+            router.push(`/path/2/${name}`)
         }
     }, [active]);
     return (
