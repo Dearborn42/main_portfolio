@@ -10,7 +10,7 @@ extend(geometry)
 export default function AboutMeOrbs({pos, name, active, setActive}){
     const router = useRouter();
     const sphereRef = useRef();
-    const [radius, speed, initalX, initalZ] = [7, 0.25, pos[0], pos[2]];
+    const [radius, speed, initalX, initalZ] = [6, 0.25, pos[0], pos[2]];
     const initialPhase = Math.atan2(initalZ, initalX);
     useFrame((state, delta) => {
         const time = state.clock.getElapsedTime();
