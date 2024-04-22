@@ -11,9 +11,9 @@ import {
 } from '@react-three/drei';
 import Link from 'next/link';
 import { FaArrowLeft } from "react-icons/fa6";
-import AboutMeOrbs from '@/Components/AboutMeOrbs';
 import dynamic from 'next/dynamic';
 const Scene = dynamic(() => import('@/Components/SceneFog'), { ssr: false });
+const AboutMeOrbs = dynamic(() => import('@/Components/AboutMeOrbs'), { ssr: false });
 
 export default function Information() {
   const [dpr, setDpr] = useState(1.5);
