@@ -32,7 +32,7 @@ export default function AboutMeOrbs({pos, name, active, setActive}){
     }, [viewport]);
     useEffect(function(){
         if(active){
-            router.push(`/path/2/${name}`)
+            router.push(`/path/2/${name === "first" ? "resume" : name === "second" ? "contact" : "about_me"}`)
         }
     }, [active]);
     return (

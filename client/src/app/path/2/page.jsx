@@ -56,7 +56,7 @@ export default function Information() {
             />
             <AboutMeOrbs 
               key={"3"} 
-              name="contact" 
+              name="third" 
               pos={[-4, 0, 3]} 
               active={active} 
               setActive={setActive} 
