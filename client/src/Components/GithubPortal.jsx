@@ -16,7 +16,7 @@ export function Frame({ bg, children, name, color, active, setActive, meshArgs, 
     }}>
       <sphereGeometry args={meshArgs} />
       <MeshPortalMaterial ref={portal} blend={active === name ? 1 : 0}>
-        <color attach="background" args={[bg]} />
+        <color attach="background" args={["#000000"]} />
         {children}
       </MeshPortalMaterial>
     </mesh>

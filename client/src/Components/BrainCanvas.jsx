@@ -11,6 +11,7 @@ import { Perf } from 'r3f-perf'
 
 export default function BrainCanvas() {
   const [active, setActive] = useState(null);
+  const [meshArray, setMeshArray] = useState([]);
   // const controlRef = useRef();
   // const {scene} = useThree();
   // useEffect(() => {
@@ -40,7 +41,7 @@ export default function BrainCanvas() {
           <BrainCamera />
           <BrainScene />
           <color attach="background" args={['#220011']} />
-          <Frame bg="#000000" name="test" active={active} setActive={setActive} meshArgs={[100, 16]}>
+          <Frame name="test" active={active} setActive={setActive} meshArgs={[100, 16]}>
             <Model />
           </Frame>
           {/* <LOD 

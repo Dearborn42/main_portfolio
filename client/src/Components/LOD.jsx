@@ -10,7 +10,7 @@ export default function LOD({ setMeshArray, meshArray, active, setActive }) {
 
     const allMeshCoordinates = [];
 
-    for (let j = 0; j < 20; j++) {
+    for (let j = 0; j < 10; j++) {
       const x = 8000 * (0.5 - Math.random());
       const y = 10000 * (0.5 - Math.random());
       const z = 8000 * (0.5 - Math.random());
@@ -28,13 +28,9 @@ export default function LOD({ setMeshArray, meshArray, active, setActive }) {
     };
   }, [scene]);
 
-  return (
-    <group>
-      {meshArray.map((x, i) => (
-        <Frame key={i+"_key"} bg="#000000" name={i+"_name"} active={active} setActive={setActive} meshArgs={[100, 16]}>
+  return (meshArray.map((x, i) => (
+        <Frame key={i+"_key"} bg="#000000" name={i+"_name"} active={active} setActive={setActive} meshArgs={[100, 16]} position={[x.x, x.y, x.z]}>
           <Model />
         </Frame>
-      ))}
-    </group>
-  )
+      )))
 }
