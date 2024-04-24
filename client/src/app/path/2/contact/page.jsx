@@ -2,6 +2,8 @@
 import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { FaArrowLeft } from 'react-icons/fa6';
 
 export default function Contact() {
     const [state, handleSubmit] = useForm("xwkganlp");
@@ -11,6 +13,12 @@ export default function Contact() {
     }
 
     return (
+        <>
+            <div className="fixed top-0 right-0 z-10 flex justify-between">
+                <Link href="/path/2" className="fixed top-5 text-sm sm:text-4xl left-12">
+                    <FaArrowLeft />
+                </Link>
+            </div>
             <form 
                 onSubmit={handleSubmit}
                 className='fixed top-12 bottom-12 right-12 left-12 border-solid border-2 border-gray-300 flex flex-col justify-evenly z-1 rounded-3xl'
@@ -54,5 +62,6 @@ export default function Contact() {
                     title="Send"
                 />
             </form>
+        </>    
     );
 }
