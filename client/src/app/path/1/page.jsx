@@ -4,10 +4,12 @@ import * as THREE from 'three'
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { useCursor, Html, Image, Text, Environment } from '@react-three/drei'
+import { useCursor, Image, Text, Environment } from '@react-three/drei'
 import { useRoute, useLocation } from 'wouter'
 import { easing } from 'maath'
 import getUuid from 'uuid-by-string'
+import Link from 'next/link'
+import { FaArrowLeft } from 'react-icons/fa6'
 
 const pexel = (id) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`
 const images = [
@@ -31,6 +33,11 @@ const GOLDENRATIO = 1.61803398875
 export default function App(){
   return(
     <div className='fixed top-0 bottom-0 right-0 left-0'>
+      <div className="fixed top-0 right-0 z-10 flex justify-between">
+        <Link href="/path" className="fixed top-12 text-sm sm:text-4xl left-24">
+          <FaArrowLeft />
+        </Link>
+      </div>
       <Canvas dpr={[1, 1.5]} camera={{ fov: 70, position: [0, 2, 15] }}>
         <color attach="background" args={['#191920']} />
         <fog attach="fog" args={['#191920', 0, 15]} />
