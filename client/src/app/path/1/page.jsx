@@ -19,13 +19,13 @@ const images = [
   { position: [-0.8, 0, -0.6], rotation: [0, 0, 0], url: "https://res.cloudinary.com/dkilzmi3w/image/upload/v1714034088/Screenshot_2024-04-25_013359_gr4t2s.png", link: "https://github.com/Dearborn42/mern-blueprint" },
   { position: [0.8, 0, -0.6], rotation: [0, 0, 0], url: "https://res.cloudinary.com/dkilzmi3w/image/upload/v1714033733/Screenshot_2024-03-24_230537_fdpwxz.png", link: "https://scurtisphd.com/home" },
   // Left
-  { position: [-1.75, 0, 0.25], rotation: [0, Math.PI / 2.5, 0], url: pexel(327482), link: "https://github.com/Dearborn42/React-TopDown-Platormer" },
-  { position: [-2.15, 0, 1.5], rotation: [0, Math.PI / 2.5, 0], url: pexel(325185), link: "https://github.com/Dearborn42/TaskManager" },
-  { position: [-2, 0, 2.75], rotation: [0, Math.PI / 2.5, 0], url: pexel(358574), link: "https://github.com/Dearborn42/Enhanced_To_Do_list" },
+  { position: [-1.75, 0, 0.25], rotation: [0, Math.PI / 2.5, 0], url: "https://res.cloudinary.com/dkilzmi3w/image/upload/v1714075480/Screenshot_2024-04-25_130410_nbm1m4.png", link: "https://github.com/Dearborn42/React-TopDown-Platormer" },
+  { position: [-2.15, 0, 1.5], rotation: [0, Math.PI / 2.5, 0], url: "https://res.cloudinary.com/dkilzmi3w/image/upload/v1714075900/Screenshot_2024-04-25_130951_aguxht.png", link: "https://github.com/Dearborn42/Wack-A-Mole" },
+  { position: [-2, 0, 2.75], rotation: [0, Math.PI / 2.5, 0], url: "https://res.cloudinary.com/dkilzmi3w/image/upload/v1714076992/Screenshot_2024-04-25_132929_n8xmyz.png", link: "https://github.com/Dearborn42/Homepage" },
   // Right
-  { position: [1.75, 0, 0.25], rotation: [0, -Math.PI / 2.5, 0], url: pexel(227675), link: "https://github.com/Dearborn42/tourApp" },
-  { position: [2.15, 0, 1.5], rotation: [0, -Math.PI / 2.5, 0], url: pexel(911738), link: "https://github.com/Dearborn42/QuiktekComputers" },
-  { position: [2, 0, 2.75], rotation: [0, -Math.PI / 2.5, 0], url: pexel(1738986), link: "https://github.com/Dearborn42/Next_Auth_Login" }
+  { position: [1.75, 0, 0.25], rotation: [0, -Math.PI / 2.5, 0], url: "https://res.cloudinary.com/dkilzmi3w/image/upload/v1714076322/Screenshot_2024-04-25_131821_etfha1.png", link: "https://github.com/Dearborn42/tourApp" },
+  { position: [2.15, 0, 1.5], rotation: [0, -Math.PI / 2.5, 0], url: "https://res.cloudinary.com/dkilzmi3w/image/upload/v1714076608/Screenshot_2024-04-25_132149_zyiu52.png", link: "https://github.com/Dearborn42/QuiktekComputers" },
+  { position: [2, 0, 2.75], rotation: [0, -Math.PI / 2.5, 0], url: "https://res.cloudinary.com/dkilzmi3w/image/upload/v1714076762/Screenshot_2024-04-25_132547_dtwkfz.png", link: "https://github.com/Dearborn42/Next_Auth_Login" }
 ]
 
 const GOLDENRATIO = 1.61803398875
