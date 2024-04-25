@@ -15,8 +15,16 @@ export default function Model() {
             scale={[40, 40, 40]}
             rotation={[Math.PI / 2, 0, 0]}
           >
-            <Html rotation-x={-Math.PI / 2} transform occlude>
-              <Image src={code1} alt={"code"} width={40} height={40} />
+            <Html 
+              className="content" 
+              rotation-x={-Math.PI / 2} 
+              position={[0, 0.05, -0.09]} 
+              transform 
+              
+            >
+              <div className="wrapper" onPointerDown={(e) => e.stopPropagation()}>
+                <iframe title="embed" width={668} height={432} src="https://threejs.org/" className='relative' />
+              </div>
             </Html>
           </mesh>
         </group>

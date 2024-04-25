@@ -1786,3 +1786,17 @@ loader:after {
     opacity: 0;
   }
 }
+
+.content {
+  width: 334px;
+  height: 216px;
+  background: #f0f0f0;
+  padding: 0;
+}
+
+.wrapper {
+  width: 668px;
+  height: 432px;
+  transform: scale(0.5);
+  transform-origin: top left;
+}
