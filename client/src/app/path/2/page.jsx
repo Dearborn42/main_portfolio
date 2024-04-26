@@ -37,7 +37,7 @@ export default function Information() {
         <AdaptiveEvents />
         <Scene active={active}/>
         <Suspense fallback={null}>
-          <Instances limit={6} range={6} position={[0, 0, 0]}>
+          <Instances limit={3} range={3} position={[0, 0, 0]}>
             <sphereGeometry args={[2,16,16]} />
             <meshStandardMaterial color="#f0f0f0"/>
             <AboutMeOrbs 

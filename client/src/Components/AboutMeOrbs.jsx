@@ -31,7 +31,7 @@ export default function AboutMeOrbs({pos, name, active, setActive}){
         easing.damp(sphereRef.current, "blend", worldOpen ? 1 : 0, 0.2, delta);
     }, [viewport]);
     useEffect(function(){
-        if(active){
+        if(active === name){
             router.push(`/path/2/${name === "first" ? "resume" : name === "second" ? "contact" : "about_me"}`)
         }
     }, [active]);
