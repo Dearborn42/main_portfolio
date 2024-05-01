@@ -126,9 +126,8 @@ export default function AboutMe(){
             </div>
             <div className="about">
                 <div className="about-text">
-                <p>As a high school honor student with a stellar 4.0 GPA and a dedication to excellence, I am poised to achieve my goal of earning an Honor High School diploma in May 2024. Alongside my academic pursuits, I am honing my skills in computer coding at West-MEC vocational school, where I am an active member of Future Business Leaders of America (FBLA). Through my involvement in FBLA and collaborative projects at West-MEC, I've developed strong teamwork and leadership abilities.</p>
-                <p> My experiences have taught me the value of effective communication, adaptability, and problem-solving. Whether it's leading a group project or volunteering in my community, I approach every opportunity with enthusiasm and a drive for success.</p>
-    
+                <p>As a high school honor student with a stellar 4.0 GPA and a dedication to excellence I am poised to achieve my goal of earning an Honor High School diploma in May 2024. Alongside my academic pursuits I am honing my skills in computer coding at West-MEC vocational school where I am an active member of Future Business Leaders of America FBLA Through my involvement in FBLA and collaborative projects at West-MEC I have developed strong teamwork and leadership abilities.</p>
+                <p> My experiences have taught me the value of effective communication and adaptability and problem-solving. Whether it is leading a group project or volunteering in my community I approach every opportunity with enthusiasm and a drive for success.</p>
                 <p>With a passion for learning and a commitment to making a difference, I strive to excel in every endeavor I undertake. From my role as a crew member at Five Guys to volunteering with organizations like the Arizona Association of Foster and Adoptive Parents, I embrace challenges with a positive attitude and a willingness to contribute. With a weighted GPA of 4.944 and recognition for my skills in HTML5 application development and cybersecurity, I am ready to embark on the next chapter of my academic and professional journey.</p>
                 </div>
             </div>
